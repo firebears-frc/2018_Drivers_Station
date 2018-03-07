@@ -21,6 +21,7 @@ void setup() {
   pinMode(14, INPUT_PULLUP);
   pinMode(15, INPUT_PULLUP);
   pinMode(16, INPUT_PULLUP);
+  pinMode(A2, INPUT);
 
   // Initialize Joystick Library
   Joystick.begin();
@@ -29,6 +30,7 @@ void setup() {
 
 // Last state of the button
 int lastButtonState[17] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int lastA2Pin = 0;
 
 void loop() {
 
@@ -61,6 +63,17 @@ void loop() {
       if (index == 5) {
         Joystick.setButton(16 - 1, currentButtonState);
       }
+      if (index == 2) {
+        Joystick.setButton(17 - 1, currentButtonState);
+      }
+      if (index == 3) {
+        Joystick.setButton(18 - 1, currentButtonState);
+      }
+    }
+    int a2pin = analogRead(A2);
+    if (a2pin != lastA2Pin) {
+      Joystick.setButton(12 - 1, a2pin==0 ? 1 : 0);
+      lastA2Pin = a2pin;
     }
 
     unsigned int potValue = analogRead(A1);
@@ -70,4 +83,5 @@ void loop() {
 
   delay(50);
 }
+
 
