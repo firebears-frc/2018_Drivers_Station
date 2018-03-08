@@ -21,10 +21,12 @@ void setup() {
   pinMode(14, INPUT_PULLUP);
   pinMode(15, INPUT_PULLUP);
   pinMode(16, INPUT_PULLUP);
+  pinMode(A1, INPUT_PULLUP);
   pinMode(A2, INPUT);
 
   // Initialize Joystick Library
-  Joystick.begin();
+  Joystick.begin(false);
+  Serial.begin(9600);
 }
 
 
@@ -70,18 +72,20 @@ void loop() {
         Joystick.setButton(18 - 1, currentButtonState);
       }
     }
-    int a2pin = analogRead(A2);
-    if (a2pin != lastA2Pin) {
-      Joystick.setButton(12 - 1, a2pin==0 ? 1 : 0);
-      lastA2Pin = a2pin;
-    }
+//    int a2pin = analogRead(A2);
+//    if (a2pin != lastA2Pin) {
+//      Joystick.setButton(12 - 1, a2pin==0 ? 1 : 0);
+//      lastA2Pin = a2pin;
+//    }
 
     unsigned int potValue = analogRead(A1);
-    unsigned int throttleValue = map(potValue, 0, 1023, 0, 1023);
+    unsigned int throttleValue = int(potValue);
+    //unsigned int throttleValue = map(potValue, 0, 255, 0, 255);
     Joystick.setThrottle(throttleValue);
+    //Joystick.setRudder(throttleValue);
+//    Serial.println(a2pin);
+    Joystick.sendState() ;
   }
 
   delay(50);
 }
-
-
