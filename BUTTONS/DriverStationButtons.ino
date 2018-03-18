@@ -42,31 +42,25 @@ void loop() {
       lastButtonState[index] = currentButtonState;
 
       if (index == 10) {
-        Joystick.setButton(7 - 1, currentButtonState);//arm down
+        Joystick.setButton(7 - 1, currentButtonState);
       }
       if (index == 16) {
-        Joystick.setButton(9 - 1, currentButtonState);//arm up
+        Joystick.setButton(9 - 1, currentButtonState);
       }
       if (index == 14) {
-        Joystick.setButton(14 - 1, currentButtonState);//open and close arm
+        Joystick.setButton(14 - 1, currentButtonState);
       }
       if (index == 15) {
-        Joystick.setButton(1 - 1, currentButtonState);//shoot
-      }
-      if (index == 6) {
-        Joystick.setButton(6 - 1, currentButtonState);
-      }
-      if (index == 8) {
-        Joystick.setButton(8 - 1, currentButtonState);
+        Joystick.setButton(1 - 1, currentButtonState);
       }
       if (index == 9) {
-        Joystick.setButton(13 - 1, currentButtonState);//celebrate
+        Joystick.setButton(13 - 1, currentButtonState);
       }
       if (index == 4) {
-        Joystick.setButton(15 - 1, currentButtonState);//auto switch scale
+        Joystick.setButton(15 - 1, currentButtonState);
       }
       if (index == 5) {
-        Joystick.setButton(16 - 1, currentButtonState);//auto cross or don't
+        Joystick.setButton(16 - 1, currentButtonState);
       }
       if (index == 2) {
         Joystick.setButton(17 - 1, currentButtonState);
